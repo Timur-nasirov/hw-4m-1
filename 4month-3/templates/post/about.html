@@ -1,0 +1,16 @@
+{% extends 'post/include/homepage.html' %}
+
+{% block content %}
+{% include 'post/include/header.html' %}
+
+    <h1>{{ description }}</h1>
+    <p>{{ greetings }}</p>
+    <h2>Преимущества</h2>
+
+    {% for number in numbers %}
+    <ul>
+        <li>{{ number }}</li>
+    </ul>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'post/include/homepage.html' %}
+
+{% block content %}
+{% include 'post/include/header.html' %}
+
+    <h1>{{ description }}</h1>
+
+    <ol>
+        <a href="tel: {{ phone }}"><li>Номер телефона</li></a>
+        <a href="https://wa.me/{{ phone }}"><li>Наш Whatsapp</li></a>
+        <a href="{{ instagram }}"><li>Наш instagram</li></a>
+        <a href="{{telegram}}"><li>Наш telegram</li></a>
+    </ol>
+{% endblock %}
