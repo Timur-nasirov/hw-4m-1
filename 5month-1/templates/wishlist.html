@@ -1,0 +1,114 @@
+{% include 'include/home.html' %}
+{% load static %}
+<body class="theme-color-1">
+    <!-- Preloader start -->
+    <div id="preLoader">
+        <div class="loader">
+            <img src="{{ settings.loader.url }}" alt="Preloader">
+        </div>
+    </div>
+    <!-- Preloader end -->
+
+    {% include 'include/header.html' %}
+
+    <!-- Breadcrumb start -->
+    <div class="breadcrumb-area bg-img bg-cover" data-bg-image="assets/images/breadcrumb-bg.jpg">
+        <div class="overlay 65"></div>
+        <div class="container">
+            <div class="content text-center">
+                <h2 class="color-white">Понравившиеся товары</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb end -->
+
+    <!-- Shopping-area Start -->
+    <div class="shopping-area cart ptb-100">
+        <div class="container">
+            <div class="row justify-content-center gx-xl-5">
+                <div class="col-lg-9">
+                    <form>
+                        <div class="item-list border radius-md table-responsive">
+                            <table class="shopping-table">
+                                <thead>
+                                    <tr class="table-heading">
+                                        <th scope="col" class="first">Продукт</th>
+                                        <th scope="col">Цена</th>
+                                        <th scope="col">Добавить в корзину</th>
+                                        <th scope="col" class="last">Удалить</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="item">
+                                        <td class="product-desc">
+                                            <h6>
+                                                <a class="product-title mb-10" href="shop-details.html">Masala Chicken</a>
+                                            </h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="mb-0">14 сом</h6>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'cart' %}" class="btn btn-sm btn-primary radius-sm">Добавить в корзину</a>
+                                        </td>
+                                        <td class="text-end">
+                                            <a href="{% url 'cart' %}" class="btn btn-remove rounded-pill mx-auto">
+                                                <i class="fal fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Shopping-area End -->
+
+    <div class="gallery-area" data-aos="fade-up">
+        <div class="container">
+            <div class="swiper gallery-slider">
+                <div class="swiper-wrapper">
+                    {% for image in gallery %}
+                    
+                    <div class="swiper-slide">
+                        <a href="{{ image.link }}" class="slider-item" title="{{ image.title }}" target="_blank">
+                            <div class="lazy-container ratio ratio-2-3">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}">
+                           </div>
+                            <div class="icon rounded-pill"><img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}"></div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gallery-area" data-aos="fade-up">
+        <div class="container">
+            <div class="swiper gallery-slider">
+                <div class="swiper-wrapper">
+                    {% for image in gallery %}
+                    
+                    <div class="swiper-slide">
+                        <a href="{{ image.link }}" class="slider-item" title="{{ image.title }}" target="_blank">
+                            <div class="lazy-container ratio ratio-2-3">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}">
+                           </div>
+                            <div class="icon rounded-pill"><img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}"></div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'include/footer.html' %}

@@ -1,0 +1,80 @@
+{% load static %}
+{% include 'include/home.html' %}
+<body class="theme-color-1">
+    <!-- Preloader start -->
+    <div id="preLoader">
+        <div class="loader">
+            <img src="{% static 'assets/images/loader-1.gif' %}" alt="Preloader">
+        </div>
+    </div>
+    <!-- Preloader end -->
+    {% include 'include/header.html' %}
+<!-- Breadcrumb start -->
+    <div class="breadcrumb-area bg-img bg-cover" data-bg-image="{% static 'assets/images/breadcrumb-bg.jpg' %}">
+        <div class="overlay 65"></div>
+        <div class="container">
+            <div class="content text-center">
+                <h2 class="color-white">Блоги</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb end -->
+    
+    <!-- Blog-area start -->
+    <div class="blog-area blog-1 pt-100 pb-75">
+        <div class="container">
+            <div class="row">
+                {% for blog in blogs %}
+                <div class="col-xl-4 col-md-6" data-aos="fade-up">
+                    <article class="card mb-25 radius-md">
+                        <div class="card-content radius-md p-25 border">
+                            <ul class="card-list list-unstyled mb-15">
+                                <li class="font-sm icon-start">
+                                    <span target="_self" title="Link"><i class="fal fa-user"></i>От {{ blog.author }}</span>
+                                </li>
+                                <li class="font-sm icon-start">
+                                    <span target="_self" title="Link"><i class="fal fa-calendar-check"></i>{{ blog.date }}</span>
+                                </li>
+                                <li class="font-sm icon-start">
+                                    <span target="_self" title="Link"><i class="fal fa-tag"></i>{{ blog.tags }}</span>
+                                </li>
+                            </ul>
+                            <h4 class="card-title lc-2 mb-15">
+                                <a href="{% url 'blog-details' id=blog.id %}" target="_self" title="Link">
+                                    {{ blog.title }}
+                                </a>
+                            </h4>
+                            <a href="{% url 'blog-details' id=blog.id %}" class="btn-text color-primary" target="_self" title="Read More">Читать больше</a>
+                        </div>
+                    </article>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Blog-area end -->
+    <div class="gallery-area" data-aos="fade-up">
+        <div class="container">
+            <div class="swiper gallery-slider">
+                <div class="swiper-wrapper">
+                    {% for image in gallery %}
+                    
+                    <div class="swiper-slide">
+                        <a href="{{ image.link }}" class="slider-item" title="{{ image.title }}" target="_blank">
+                            <div class="lazy-container ratio ratio-2-3">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}">
+                           </div>
+                            <div class="icon rounded-pill"><img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}"></div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% include 'include/footer.html' %}

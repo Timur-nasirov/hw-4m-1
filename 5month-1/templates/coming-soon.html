@@ -1,0 +1,64 @@
+{% include 'include/home.html' %}
+{% load static %}
+
+<body class="theme-color-1">
+    <!-- Preloader start -->
+    <div id="preLoader">
+        <div class="loader">
+            <img src="{{ settings.loader.url }}" alt="Preloader'">
+        </div>
+    </div>
+    <!-- Coming-soon-area start -->
+    <div class="coming-soon-area">
+        <div class="container">
+            <div class="row min-vh-100 align-items-center">
+                <div class="col-12">
+                    <div class="wrapper radius-md shadow-md">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="content bg-light">
+                                    <div class="logo">
+                                        <a href="{% url 'index' %}" target="_self" title="Treats">
+                                            <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ settings.logo.url }}" alt="Logo">
+                                        </a>
+                                    </div>
+                                    <div class="svg-image mx-auto">
+                                        <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ coming.image.url }}" alt="Image">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="main-form">
+                                    <a href="{% url 'index' %}" class="icon-link" title="Go back to home" target="_self"><i class="fal fa-home"></i></a>
+                                    <div class="title mb-30">
+                                        <h3 class="mb-15">{{ coming.title }}</h3>
+                                        <p class="text">{{ coming.description }}</p>
+                                    </div>
+                                    <div id="timer" class="timer mb-30">
+                                        <div id="days" class="count bg-primary-light radius-sm">
+                                            <span class="h4 color-primary time mb-1"></span>
+                                            <span>Days</span>
+                                        </div>
+                                        <div id="hours" class="count bg-primary-light radius-sm">
+                                            <span class="h4 color-primary time mb-1"></span>
+                                            <span>Hours</span>
+                                        </div>
+                                        <div id="minutes" class="count bg-primary-light radius-sm">
+                                            <span class="h4 color-primary time mb-1"></span>
+                                            <span>Minutes</span>
+                                        </div>
+                                        <div id="seconds" class="count bg-primary-light radius-sm">
+                                            <span class="h4 color-primary time mb-1"></span>
+                                            <span>Seconds</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Coming-soon-area end -->
+{% include 'include/footer.html' %}

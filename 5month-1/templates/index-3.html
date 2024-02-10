@@ -1,0 +1,293 @@
+{% include 'include/home.html' %}
+{% load static %}
+<body class="theme-color-3">
+    <!-- Preloader start -->
+    <div id="preLoader">
+        <div class="loader">
+            <img src="{{ settings.loader.url }}" alt="Preloader'">
+        </div>
+    </div>
+    {% include 'include/header.html' %}
+
+    <!-- Home-area start-->
+    <section class="hero-banner hero-banner-3 parallax">
+        <div class="overlay"></div>
+        <div class="container-fluid">
+            <div class="row align-items-center gx-xl-5">
+                <div class="col-lg-6">
+                    <div class="fluid-left">
+                        <div class="banner-content mb-40">
+                            <h1 class="title color-white mb-30" data-aos="fade-up" data-aos-delay="100">
+                                {{ settings3.title_1 }}
+                            </h1>
+                            <p class="text color-light" data-aos="fade-up" data-aos-delay="100">{{ settings3.desc_1}}
+                            </p>
+                            <div class="cta-btn mt-40 btn-groups" data-aos="fade-up" data-aos-delay="250">
+                                <a href="{% url 'contact' %}" class="btn btn-lg btn-primary" title="Discover More" target="_self">Контакты</a>
+                                <a href="{% url 'reservation' %}" class="btn btn-lg btn-outline" title="Book a Table" target="_self">Забронировать стол</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="banner-image mb-40 parallax-img" data-speed="0.1" data-revert="true">
+                        <img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ settings3.image_1.url }}" alt="Banner Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Home-area end -->
+
+    <!-- About-area start -->
+    <section class="about-area about-3 pt-100 pb-60 parallax">
+        <!-- Spacer -->
+        <div class="container">
+            <div class="row align-items-center gx-xl-5">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="image mb-40 parallax-img img-left" data-speed="0.1" data-revert="true">
+                        <img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ settings3.image_2.url }}" alt="Image">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="content-title mb-40 ps-xl-2">
+                        <h2 class="title mb-30">
+                            {{ settings3.title_2 }}
+                        </h2>
+                        <div class="content-text">
+                            {{ settings3.desc_2 }}
+                        </div>
+                        <div class="info-list mt-30">
+                            <div class="row">
+                                <div class="col-sm-4 item mb-30">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <span class="h3 font-medium mb-2"><span class="counter">{{ settings3.customers }}</span>+</span>
+                                            <p class="card-text font-lg lh-1">Всего клиентов</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 item mb-30">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <span class="h3 font-medium mb-2"><span class="counter">{{ settings3.outlet }}</span>+</span>
+                                            <p class="card-text font-lg lh-1">Торговых точек</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 item mb-30">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <span class="h3 font-medium mb-2"><span class="counter">{{ settings3.satis }}</span>%</span>
+                                            <p class="card-text font-lg lh-1">Процент удовлетворения</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-groups gap-25 mt-10" data-aos="fade-up">
+                            <a href="{% url 'login' %}" class="btn btn-lg btn-primary" title="Reservation" target="_self">Войти</a>
+                            <a href="{{ settings2.video }}" class="video-btn video-btn-text video-btn-sm youtube-popup" target="_self" title="Show Video">
+                                <i class="fas fa-play"></i>
+                                <span>Как зарегестрироваться?</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About-area end -->
+
+    <!-- Category-area start -->
+    <section class="category-area category-3 bg-primary pt-120 pb-95">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title title-center mb-50" data-aos="fade-up">
+                        <h2 class="title mb-0 color-white">Новые продукты</h2>
+                    </div>
+                </div>
+                <div class="col-12" data-aos="fade-up">
+                    <div class="row">
+                        {% for product in products %}
+                        <div class="col-xl-2 col-lg-3 col-sm-6">
+                            <div class="card text-center bg-dark p-20 mb-25">
+                                <a href="{% url 'shop-details' id=product.id %}" target="_self" title="Link" class="card-icon mb-20">
+                                    <img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" alt="Image">
+                                </a>
+                                <h6 class="card-title color-white lc-1 mb-0">
+                                    <a href="{% url 'shop-details'  %}" target="_self" title="Chocolate Coffee">{{ product.title }}</a>
+                                </h6>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Category-area end -->
+
+    <!-- Product-area start -->
+    <section class="product-area product-3 pt-100 pb-75">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title title-center mb-20" data-aos="fade-up">
+                        <h2 class="title mb-30">Продукты</h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tab-content" data-aos="fade-up">
+                        <div class="tab-pane slide show active" id="tab1">
+                            <div class="row">
+                                {% for product in products %}
+                                <div class="col-sm-6 col-lg-4 col-xl-3 item">
+                                    <div class="product radius-md text-center mb-25">
+                                        <figure class="product-img mb-10 mx-auto">
+                                            <a href="{% url 'shop-details' id=product.id %}" target="_self" title="Link" class="lazy-container ratio ratio-1-1 bg-none">
+                                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{% static 'assets/images/product/cafe/pro-1.png' %}" alt="Image">
+                                            </a>
+                                            <div class="hover-show">
+                                                <a href="{% url 'cart' %}" class="btn btn-md btn-primary" title="Add to Cart" target="_self">Добавить в корзину</a>
+                                            </div>
+                                        </figure>
+                                        <div class="product-details px-2">
+                                            <h4 class="product-title lc-1 mb-1"><a href="{% url 'shop-details' id=product.id %}" target="_self">{{ product.title }}</a></h4>
+                                            <div class="product-price mt-1">
+                                                <span class="h6 new-price color-primary">{{ product.new_price }} сом</span>
+                                                <span class="prev-price font-sm"><s>{{ product.old_price }} сом</s></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cta-btn text-center mt-15 mb-25">
+                        <a href="{% url 'shop' %}" class="btn btn-lg btn-primary radius-sm" title="More Items" target="_self">Магазин</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product-area end -->
+
+    <!-- Product-area start -->
+    <section class="product-area product-lg-3 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title title-center mb-20" data-aos="fade-up">
+                        <h2 class="title">Блюда</h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        {% for product in dishes %}
+                        <div class="col-md-6 col-xl-4">
+                            <div class="product text-center p-30 pb-70 radius-md mt-30 mb-30">
+                                <div class="product-details">
+                                    <h3 class="product-title lc-1 mb-10">
+                                        <span target="_self">{{ product.title }}</span>
+                                    </h3>
+                                    <div class="product-price mb-15">
+                                        <span class="h4 new-price color-primary">{{ product.new_price }} сом</span>
+                                        <span class="prev-price"><s>{{ product.old_price }} сом</s></span>
+                                    </div>
+                                    <p class="product-text lc-3">{{ product.description }}</p>
+                                </div>
+                                <figure class="product-img mt-25 mb-15 mx-auto">
+                                    <a href="{% url 'shop-details' id=1 %}" target="_self" title="Link" class="lazy-container ratio ratio-2-3 bg-none">
+                                        <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{% static 'assets/images/product/cafe/pro-9.png' %}" alt="Image">
+                                    </a>
+                                </figure>
+                                <a href="{% url 'cart' %}" class="btn btn-lg btn-primary" title="Order Coffee Now" target="_self">Добавить в корзинy</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonial-area end -->
+
+        <!-- Blog-area start -->
+        <section class="blog-area blog-3 pb-70" data-aos="fade-up">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="col-12">
+                            <div class="section-title title-inline mb-50">
+                                <div>
+                                    <h2 class="title color-white">Блог</h2>
+                                </div>
+                                <a href="{% url 'blogs' %}"><button class="btn btn-lg btn-primary" type="button"  aria-label="Read Now">Читать больше</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            {% for blog in blogs %}
+                            <div class="col-md-6 col-lg-4">
+                                <article class="card mb-30 radius-md p-20">
+                                    <div class="card-img">
+                                        <a href="{% url 'blog-details' id=1 %}" target="_self" title="Link" class="lazy-container ratio ratio-5-3">
+                                            <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{% static 'assets/images/blog/blog-7.jpg' %}" alt="Blog Image">
+                                        </a>
+                                    </div>
+                                    <div class="card-content">
+                                        <ul class="card-list list-unstyled mb-20 rounded-pill px-3  py-2 justify-content-between shadow-md">
+                                            <li class="icon-start">
+                                                <span target="_self" title="Link"><i class="fal fa-user"></i>От {{ blog.author }}</span>
+                                            </li>
+                                            <li class="icon-start">
+                                                <span target="_self" title="Link"><i class="fal fa-calendar-check"></i>{{ blog.date }}</span>
+                                            </li>
+                                            <li class="icon-start">
+                                                <span target="_self" title="Link"><i class="fal fa-tag"></i>{{ blog.tags }}</span>
+                                            </li>
+                                        </ul>
+                                        <h4 class="card-title lc-1 mb-15">
+                                            <a href="{% url 'blog-details' id=blog.id %}" target="_self" title="Link">
+                                                {{ blog.title }}
+                                            </a>
+                                        </h4>
+                                        <a href="{% url 'blog-details' id=1 %}" class="btn-text color-primary font-lg" target="_self" title="Read More">Читать больше</a>
+                                    </div>
+                                </article>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Blog-area end -->
+    </div>
+    <!-- Testimonial-blog-area end -->
+
+    <!-- Gallery-area start -->
+    <div class="gallery-area" data-aos="fade-up">
+        <div class="container">
+            <div class="swiper gallery-slider">
+                <div class="swiper-wrapper">
+                    {% for image in gallery %}
+                    
+                    <div class="swiper-slide">
+                        <a href="{{ image.link }}" class="slider-item" title="{{ image.title }}" target="_blank">
+                            <div class="lazy-container ratio ratio-2-3">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}">
+                           </div>
+                            <div class="icon rounded-pill"><img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}"></div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Gallery-area end -->
+{% include 'include/footer.html' %}

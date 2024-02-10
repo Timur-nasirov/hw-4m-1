@@ -1,0 +1,97 @@
+{% load static %}
+{% include 'include/home.html' %}
+<body class="theme-color-1">
+    <!-- Preloader start -->
+    <div id="preLoader">
+        <div class="loader">
+            <img src="{{ settings.loader.url }}" alt="Preloader'">
+        </div>
+    </div>
+    {% include 'include/header.html' %}
+    <!-- Breadcrumb start -->
+    <div class="breadcrumb-area bg-img bg-cover" data-bg-image="{% static 'assets/images/breadcrumb-bg.jpg' %}">
+        <div class="overlay 65"></div>
+        <div class="container">
+            <div class="content text-center">
+                <h2 class="color-white">Меню</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Menu</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb end -->
+
+    <!-- Menu-area start -->
+    <section class="menu-area pt-100 pb-75">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tab-content">
+                        <div class="tab-pane slide show active">
+                            <div class="tab-content">
+                                <div class="tab-pane slide show active">
+                                    <div class="row">
+                                        {% for menu in menus %}
+                                        <div class="col-lg-6 col-md-12 col-sm-6">
+                                            <div class="menu p-15 mb-25">
+                                                <figure class="menu-img">
+                                                    <div class="hover-show">
+                                                        <a href="{% url 'cart' %}" class="btn-icon radius-sm" title="Добавить в корзину" target="_self">
+                                                            <i class="fal fa-shopping-bag"></i><span>Добавить в корзину</span>
+                                                        </a>
+                                                    </div>
+                                                </figure>
+                                                <div class="menu-details">
+                                                    <div class="menu-title-price mb-2">
+                                                        <h4 class="menu-title lc-1 mb-0">
+                                                            {{ menu.title }}
+                                                        </h4>
+                                                        <div class="menu-price">
+                                                            <span class="h5 new-price color-primary">{{ menu.new_price }} сом</span>
+                                                            <span class="prev-price"><s>{{ menu.old_price }} сом</s></span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text mb-0">
+                                                        {{ menu.description }}    
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Menu-area end -->
+
+    <!-- Gallery-area start -->
+    <div class="gallery-area" data-aos="fade-up">
+        <div class="container">
+            <div class="swiper gallery-slider">
+                <div class="swiper-wrapper">
+                    {% for image in gallery %}
+                    
+                    <div class="swiper-slide">
+                        <a href="{{ image.link }}" class="slider-item" title="{{ image.title }}" target="_blank">
+                            <div class="lazy-container ratio ratio-2-3">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}">
+                           </div>
+                            <div class="icon rounded-pill"><img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}"></div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Gallery-area end -->
+{% include 'include/footer.html' %}

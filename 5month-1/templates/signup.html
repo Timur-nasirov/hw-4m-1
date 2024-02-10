@@ -1,0 +1,119 @@
+{% load static %}
+{% include 'include/home.html' %}
+<body class="theme-color-1">
+    <!-- Preloader start -->
+    <div id="preLoader">
+        <div class="loader">
+            <img src="{{ settings.loader.url }}" alt="Preloader">
+        </div>
+    </div>
+    <!-- Preloader end -->
+    {% include 'include/header.html' %}
+    <!-- Breadcrumb start -->
+    <div class="breadcrumb-area bg-img bg-cover" data-bg-image="assets/images/breadcrumb-bg.jpg">
+        <div class="overlay 65"></div>
+        <div class="container">
+            <div class="content text-center">
+                <h2 class="color-white">Регистрация</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Signup</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb end -->
+
+    <!-- Authentication Start -->
+    <div class="authentication-area ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="main-form">
+                        <h3 class="title mb-30" data-splitting="" data-aos="">Зарегистрироваться в {{ settings.title }}</h3>
+                        <form id="#authForm" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group mb-20">
+                                        <label for="userName" class="form-label">Логин</label>
+                                        <input type="text" name="name" id="userName" class="form-control" placeholder="Логин" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group mb-20">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="email" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group mb-20">
+                                        <label for="password" class="form-label">Пароль</label>
+                                        <div class="position-relative">
+                                            <input type="password" name="password" id="password" class="form-control" placeholder="Пароль" required>
+                                            <span class="show-password-field">
+                                                <i class="show-icon"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group mb-20">
+                                        <label for="confirmPassword" class="form-label">Подтверждение пароля</label>
+                                        <div class="position-relative">
+                                            <input type="password" name="password_conf" id="confirmPassword" class="form-control" placeholder="Пароль" required>
+                                            <span class="show-password-field">
+                                                <i class="show-icon"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="custom-checkbox font-sm">
+                                        <input class="input-checkbox" type="checkbox" name="checkbox" id="checkbox" value="">
+                                        <label class="form-check-label" for="checkbox"><span>Я принимаю <a href="{% url 'terms-conditions' %}">политику конфиденциальности</a></span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-20">
+                                <button class="btn btn-lg btn-primary rounded-pill w-100" type="submit" aria-label="Signup">Регистрация</button>
+                                <div class="link font-sm mt-30">
+                                    Есть аккаунт? <a href="{% url 'login' %}" target="_self" title="Login Now">Войти</a>
+                                </div>
+                            </div>
+                        </form>
+                        {% if show_message %}
+                        <h3> {{ message }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Authentication End -->
+
+    <!-- Gallery-area start -->
+    <div class="gallery-area" data-aos="fade-up">
+        <div class="container">
+            <div class="swiper gallery-slider">
+                <div class="swiper-wrapper">
+                    {% for image in gallery %}
+                    
+                    <div class="swiper-slide">
+                        <a href="{{ image.link }}" class="slider-item" title="{{ image.title }}" target="_blank">
+                            <div class="lazy-container ratio ratio-2-3">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}">
+                           </div>
+                            <div class="icon rounded-pill"><img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}"></div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Gallery-area end -->
+
+   {% include 'include/footer.html' %}

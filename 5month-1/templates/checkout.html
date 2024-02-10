@@ -1,0 +1,166 @@
+{% include 'include/home.html '%}
+{% load static %}
+<body class="theme-color-1">
+    <!-- Preloader start -->
+    <div id="preLoader">
+        <div class="loader">
+            <img src="{% static 'assets/images/loader-1.gif' %}" alt="Preloader'">
+        </div>
+    </div>
+    {% include 'include/header.html' %}
+    <!-- Breadcrumb start -->
+    <div class="breadcrumb-area bg-img bg-cover" data-bg-image="{% static 'assets/images/breadcrumb-bg.jpg' %}">
+        <div class="overlay 65"></div>
+        <div class="container">
+            <div class="content text-center">
+                <h2 class="color-white">Проверка</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb end -->
+
+    <!-- Shopping-area Start -->
+    <div class="shopping-area pt-100 pb-60">
+        <div class="container">
+            <form method='post'>
+                {% csrf_token %}
+                <div class="row gx-xl-5">
+                    <div class="col-xl-8 col-lg-7 col-md-6">
+                        <div class="billing-details" data-aos="fade-up">
+                            <h4 class="mb-20">Детали платежа</h4>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-30">
+                                        <label for="name">Имя <span class="color-red">*</span> </label>
+                                        <input type="text" class="form-control" name="name" placeholder="Имя" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-30">
+                                        <label for="surname">Фамилия <span class="color-red">*</span> </label>
+                                        <input type="text" class="form-control" name="surname" placeholder="Фамилия" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-30">
+                                        <label for="phone">Телефон <span class="color-red">*</span> </label>
+                                        <input type="text" class="form-control" name="phone" placeholder="Телефон" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-30">
+                                        <label for="email">Email  <span class="color-red">*</span> </label>
+                                        <input type="email" class="form-control" name="email" placeholder="Email" required="">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-30">
+                                        <label for="address">Адрес</label>
+                                        <input type="text" class="form-control" name="address" placeholder="Адрес">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-30">
+                                        <label for="city">Город<span class="color-red">*</span> </label>
+                                        <input type="text" class="form-control" name="city" placeholder="Город" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-30">
+                                        <label for="post_code">Домофон<span class="color-red">*</span></label>
+                                        <input type="text" class="form-control" name="domofon" placeholder="Домофон">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-30">
+                                        <label for="country">Страна <span class="color-red">*</span></label><br>
+                                        <select class="niceselect form-control" name="country">
+                                            <option data-display="Выберите страну">Выберите страну</option>
+                                            <option value="ru">Россия</option>
+                                            <option value="kg">Кыргызстан</option>
+                                            <option value="kz">Казахстан</option>
+                                            <option value="uz">Узбекистан</option>
+                                            <option value="tj">Таджикистан</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5 col-md-6">
+                        <div class="order-summary form-block border radius-md mb-30">
+                            <h4 class="pb-15 mb-15 border-bottom">Детали оплаты</h4>
+                            <ul class="product-list">
+                                <li class="d-flex justify-content-between">
+                                    <span class="font-medium color-dark">Продукт 1</span>
+                                    <span class="price">10 сом</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    <span class="font-medium color-dark">Продукт 2</span>
+                                    <span class="price">15 сом</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <div class="sub-total d-flex justify-content-between">
+                                <h6>Стоимость</h6>
+                                <span class="price">35 сом</span>
+                            </div>
+                            <ul class="service-charge-list">
+                                <li class="d-flex justify-content-between">
+                                    <span class="font-medium color-dark">Комиссия (10%) </span>
+                                    <span class="price">1 сом</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    <span class="font-medium color-dark">Доставка </span>
+                                    <span class="price">0 сом</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <div class="total d-flex justify-content-between">
+                                <h6>К оплате</h6>
+                                <span class="price">37 сом</span>
+                            </div>
+                        </div>
+                        <div class="order-payment form-block border radius-md mb-30">
+                            <div class="text-center">
+                                <button class="btn btn-lg btn-primary w-100" type="submit">Оплатить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            {% if show_message %}
+            <h3>{{ message }}</h3>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Shopping-area End -->
+
+    <div class="gallery-area" data-aos="fade-up">
+        <div class="container">
+            <div class="swiper gallery-slider">
+                <div class="swiper-wrapper">
+                    {% for image in gallery %}
+                    
+                    <div class="swiper-slide">
+                        <a href="{{ image.link }}" class="slider-item" title="{{ image.title }}" target="_blank">
+                            <div class="lazy-container ratio ratio-2-3">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}">
+                           </div>
+                            <div class="icon rounded-pill"><img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}"></div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% include 'include/footer.html' %}

@@ -1,0 +1,142 @@
+{% include 'include/home.html' %}
+{% load static %}
+
+<body class="theme-color-1">
+    <!-- Preloader start -->
+    <div id="preLoader">
+        <div class="loader">
+            <img src="{% static 'assets/images/loader-1.gif' %}" alt="Preloader'">
+        </div>
+    </div>
+    {% include 'include/header.html' %}
+        <!-- Preloader end -->
+    <!-- Breadcrumb start -->
+    <div class="breadcrumb-area bg-img bg-cover" data-bg-image="{% static 'assets/images/breadcrumb-bg.jpg' %}">
+        <div class="overlay 65"></div>
+        <div class="container">
+            <div class="content text-center">
+                <h2 class="color-white">О нас</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">About</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb end -->
+
+    <!-- About-area start -->
+    <section class="about-area about-1 pt-100 pb-60 bg-white">
+        <div class="container">
+            <div class="row align-items-center gx-xl-5">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="image mb-40">
+                        <img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ about.banner_1.url }}" alt="Image">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="content-title pb-10 ps-xl-2">
+                        <h2 class="title mb-20">
+                            {{ about.title_1 }}
+                        </h2>
+                        <div class="content-text">
+                            <p>
+                                {{ about.description_1 }}
+                            </p>
+                        </div>
+                        <div class="info-list mt-30">
+                            <div class="row gx-xl-5">
+                                <div class="col-md-6 item mb-30">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <h6 class="card-title mb-2">{{ settings.quality_1 }}</h6>
+                                            <p class="card-text">{{ settings.quality_desc_1 }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 item mb-30">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <h6 class="card-title mb-2">{{ settings.quality_2 }}</h6>
+                                            <p class="card-text">
+                                                {{ settings.quality_desc_2 }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 item mb-30">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <h6 class="card-title mb-2">{{ settings.quality_3 }}</h6>
+                                            <p class="card-text">{{ settings.quality_desc_3 }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 item mb-30">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <h6 class="card-title mb-2">{{ settings.quality_4 }}</h6>
+                                            <p class="card-text">{{ settings.quality_desc_4 }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About-area end -->
+
+    <!-- Testimonial-area start -->
+    <section class="testimonial-area testimonial-1 pb-60">
+        <div class="container">
+            <div class="row align-items-center gx-xl-5">
+                <div class="col-lg-6">
+                    <div class="content-title mb-40" data-aos="fade-up">
+                        <h2 class="title mb-20">
+                            {{ about.title_2 }}
+                        </h2>
+                        <div class="content-text mb-40">
+                            <p>
+                                {{ about.description_2 }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="image mb-40" data-aos="fade-left">
+                        <img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ about.banner_2.url }}" alt="Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial-area end -->
+
+    <!-- Gallery-area start -->
+    <div class="gallery-area" data-aos="fade-up">
+        <div class="container">
+            <div class="swiper gallery-slider">
+                <div class="swiper-wrapper">
+                    {% for image in gallery %}
+                    
+                    <div class="swiper-slide">
+                        <a href="{{ image.link }}" class="slider-item" title="{{ image.title }}" target="_blank">
+                            <div class="lazy-container ratio ratio-2-3">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}">
+                           </div>
+                            <div class="icon rounded-pill"><img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}"></div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% include 'include/footer.html' %}
+</html>

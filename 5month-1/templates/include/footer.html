@@ -1,0 +1,152 @@
+{% load static %}
+{% block content %}
+<footer class="footer-area bg-img bg-cover" data-bg-image="{% static 'assets/images/footer-bg-1.jpg' %}">
+    <div class="overlay opacity-95"></div>
+    <div class="container">
+        <div class="footer-top pt-90 pb-60">
+            <div class="row justify-content-between">
+                <div class="col-xl-4 col-lg-5 col-md-7 col-sm-12">
+                    <div class="footer-widget" data-aos="fade-up">
+                        <div class="navbar-brand">
+                            <a href="{% url 'index' %}" target="_self" title="Link">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ settings.logo_bottom.url }}" alt="Treats logo">
+                            </a>
+                        </div>
+                        <p>
+                            {{ settings.description_bottom }}    
+                        </p>
+                        <div class="social-link">
+                            {% if contact.instagram %}
+                            <a href="{{ contact.instagram }}" target="_blank" title="Link"><i class="fab fa-instagram"></i></a>
+                            {% endif %}
+                            {% if contact.telegram %}
+                            <a href="{{ contact.telegram }}" target="_blank" title="Link"><i class="fab fa-telegram"></i></a>
+                            {% endif %}
+                            {% if contact.youtube %}
+                            <a href="{{ contact.youtube }}" target="_blank" title="Link"><i class="fab fa-youtube"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <div class="footer-widget" data-aos="fade-up">
+                        <h4>Частые ссылки</h4>
+                        <ul class="footer-links">
+                            <li>
+                                <a href="{% url 'shop' %}" target="_self" title="link">Магазин</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'menu' %}" target="_self" title="link">Меню</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'contact' %}" target="_self" title="link">Контакты</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'terms-conditions' %}" target="_self" title="link">Политика конфиденциальности</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'about' %}" target="_self" title="link">О нас</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer-widget" data-aos="fade-up">
+                        <h4>Последний пост</h4>
+                        <article class="article-item">
+                            <div class="image">
+                                <a href="{% url 'blog-details' id=1 %}" target="_self" title="Link" class="lazy-container ratio ratio-1-1 radius-sm">
+                                    <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{% static 'assets/images/blog/footer-blog-1' %}" alt="Blog Image">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h6 class="lc-2 mb-10">
+                                    <a href="{% url 'blog-details' id=last_blog.id %}" target="_self" title="Blog">
+                                        {{ last_blog.title }}
+                                    </a>
+                                </h6>
+                                <ul class="blog-list list-unstyled">
+                                    <li class="font-sm icon-start"><i class="far fa-user-alt"></i>{{ last_blog.author }}</li>
+                                    <li class="font-sm icon-start"><i class="fal fa-calendar-alt"></i>{{ last_blog.date }}</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                    <div class="footer-widget" data-aos="fade-up">
+                        <h4>Контакты</h4>
+                        
+                        <ul class="info-list">
+                            {% if contact.address %}
+                            <li>
+                                <i class="fal fa-map-marker-alt"></i>
+                                <span>{{ contact.address }}</span>
+                            </li>
+                            {% endif %}
+                            {% if contact.email_1 or contact.email_2 %}
+                            <li>
+                                <i class="fal fa-envelope"></i>
+                                <div class="link">
+                                    {% if contact.email_1 %}
+                                    <a href="mailto:{{ contact.email_1 }}" target="_self" title="Link">{{ contact.email_1 }}</a>
+                                    {% endif %}
+                                    {% if contact.email_2 %}
+                                    <a href="mailto:{{ contact.email_2 }}" target="_self" title="Link">{{ contact.email_2 }}</a>
+                                    {% endif %}
+                                </div>
+                            </li>
+                            {% endif %}
+                            {% if contact.phone_1 or contact.phone_2 %}
+                            <li>
+                                <i class="fal fa-headset"></i>
+                                <div class="link">
+                                    {% if contact.phone_1 %}
+                                    <a href="tel:{{ contact.phone_1 }}" target="_self" title="Link">{{ contact.phone_1 }}</a>
+                                    {% endif %}
+                                    {% if contact.phone_2 %}
+                                    <a href="tel:{{ contact.phone_2 }}" target="_self" title="Link">{{ contact.phone_2 }}</a>
+                                    {% endif %}
+                                </div>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right-area ptb-30">
+            <div class="copy-right-content">
+                <span>
+                    Copyright <i class="fal fa-copyright"></i><span id="footerDate"></span> <a href="{% url 'index' %}" target="_self" title="Treats" class="color-primary">{{ settings.title }}</a>. {{ settings.copyright }}
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="go-top"><i class="fal fa-angle-up"></i></div>
+    <!-- Go to Top -->
+
+    <!-- Jquery JS -->
+    <script src="{% static 'assets/js/vendors/jquery.min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'assets/js/vendors/bootstrap.min.js' %}"></script>
+    <!-- Counter JS -->
+    <script src="{% static 'assets/js/vendors/jquery.counterup.min.js' %}"></script>
+    <!-- Magnific Popup JS -->
+    <script src="{% static 'assets/js/vendors/jquery.magnific-popup.min.js' %}"></script>
+    <!-- Nice Select JS -->
+    <script src="{% static 'assets/js/vendors/jquery.nice-select.min.js' %}"></script>
+    <!-- Swiper Slider JS -->
+    <script src="{% static 'assets/js/vendors/swiper-bundle.min.js' %}"></script>
+    <!-- Lazysizes -->
+    <script src="{% static 'assets/js/vendors/lazysizes.min.js' %}"></script>
+    <!-- Mouse Hover JS -->
+    <script src="{% static 'assets/js/vendors/mouse-hover-move.js' %}"></script>
+    <!-- Twinmax JS -->
+    <script src="{% static 'assets/js/vendors/tweenMax.min.js' %}"></script>
+    <!-- AOS JS -->
+    <script src="{% static 'assets/js/vendors/aos.min.js' %}"></script>
+    <!-- Main script JS -->
+    <script src="{% static 'assets/js/script.js' %}"></script>
+{% endblock %}

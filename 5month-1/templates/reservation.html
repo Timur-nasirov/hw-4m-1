@@ -1,0 +1,139 @@
+{% load static %}
+{% include 'include/home.html' %}
+<body class="theme-color-1">
+    <!-- Preloader start -->
+    <div id="preLoader">
+        <div class="loader">
+            <img src="{{ settings.loader.url }}" alt="Preloader'">
+        </div>
+    </div>
+    {% include 'include/header.html' %}
+    <!-- Breadcrumb start -->
+    <div class="breadcrumb-area bg-img bg-cover" data-bg-image="{% static 'assets/images/breadcrumb-bg.jpg' %}">
+        <div class="overlay 65"></div>
+        <div class="container">
+            <div class="content text-center">
+                <h2 class="color-white">Бронирование стола</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Reservation</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb end -->
+
+    <!-- Reservation-area start -->
+    <div class="reservation-area ptb-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9" data-aos="fade-up">
+                    <div class="wrapper bg-light radius-md">
+                        <div class="section-title title-center mb-50">
+                            <h2 class="title mb-0" data-aos="fade-up">
+                                Забронировать стол
+                            </h2>
+                        </div>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-20">
+                                        <label for="fullname">ФИО</label>
+                                        <input type="text" name="name" class="form-control border-0 bg-white" id="fullname" required placeholder="Enter full name">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group mb-20">
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" class="form-control border-0 bg-white" id="email" required placeholder="Enter email address">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group mb-20">
+                                        <label for="person">Количество человек</label>
+                                        <select name="person" class="niceselect form-control border-0">
+                                            <option value="1">1 человек</option>
+                                            <option value="2">2 человека</option>
+                                            <option value="3">3 человека</option>
+                                            <option value="4">4 человека</option>
+                                            <option value="5">5 человек</option>
+                                            <option value="6">6 человек</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group mb-20">
+                                        <label for="phone">Телефон</label>
+                                        <input type="number" name="phone" class="form-control border-0 bg-white" id="phone" required placeholder="Enter phone number">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group mb-20">
+                                        <label for="date">Дата</label>
+                                        <input type="date" name="date" class="form-control border-0 bg-white" name="date" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group mb-20">
+                                        <label for="time">Время</label>
+                                        <select class="niceselect form-control border-0 bg-white" name="time">
+                                            <option value="1">с 08:00 до 09:00</option>
+                                            <option value="2">с 10:00 до 11:00</option>
+                                            <option value="3">с 12:00 до 13:00</option>
+                                            <option value="4">с 14:00 до 15:00</option>
+                                            <option value="5">с 16:00 до 17:00</option>
+                                        </select>
+                                    </div>
+                                </div><br><br><br>
+
+                                <div class="col-12">
+                                    <div class="form-group mb-20">
+                                        <textarea name="message" class="form-control border-0 bg-white" cols="30" rows="8" placeholder="Сообщение"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 text-center">
+                                    <button class="btn btn-lg btn-primary rounded-pill" type="submit" aria-label="Make a Reservation">Забронировать</button>
+                                </div>
+                            </div>
+                        </form>
+                        {% if show_message %}
+                        <h3>{{ message }}</h3>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reservation-area end -->
+
+    <!-- Gallery-area start -->
+    <div class="gallery-area" data-aos="fade-up">
+        <div class="container">
+            <div class="swiper gallery-slider">
+                <div class="swiper-wrapper">
+                    {% for image in gallery %}
+                    
+                    <div class="swiper-slide">
+                        <a href="{{ image.link }}" class="slider-item" title="{{ image.title }}" target="_blank">
+                            <div class="lazy-container ratio ratio-2-3">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}">
+                           </div>
+                            <div class="icon rounded-pill"><img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}"></div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+   {% include 'include/footer.html' %}

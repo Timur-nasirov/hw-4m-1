@@ -1,0 +1,43 @@
+{% load static %}
+{% include 'include/home.html' %}
+
+    <!-- start error area -->
+    <div class="error-area ptb-100">
+        <div class="container">
+            <div class="error-content">
+                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ error.image.url }}" alt="image" >
+                <h3>{{ error.title }}</h3>
+                <p>
+                    {{ error.description }}
+                </p>
+                <a href="{% url 'index' %}" class="btn btn-lg btn-primary rounded-pill" title="Back to Home" target="_self">В начало</a>
+            </div>
+        </div>
+    </div>
+    <!-- end error area -->
+
+    <!-- Jquery JS -->
+    <script src="{% static 'assets/js/vendors/jquery.min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'assets/js/vendors/bootstrap.min.js' %}"></script>
+    <!-- Counter JS -->
+    <script src="{% static 'assets/js/vendors/jquery.counterup.min.js' %}"></script>
+    <!-- Magnific Popup JS -->
+    <script src="{% static 'assets/js/vendors/jquery.magnific-popup.min.js' %}"></script>
+    <!-- Nice Select JS -->
+    <script src="{% static 'assets/js/vendors/jquery.nice-select.min.js' %}"></script>
+    <!-- Swiper Slider JS -->
+    <script src="{% static 'assets/js/vendors/swiper-bundle.min.js' %}"></script>
+    <!-- Lazysizes -->
+    <script src="{% static 'assets/js/vendors/lazysizes.min.js' %}"></script>
+    <!-- Mouse Hover JS -->
+    <script src="{% static 'assets/js/vendors/mouse-hover-move.js' %}"></script>
+    <!-- Twinmax JS -->
+    <script src="{% static 'assets/js/vendors/tweenMax.min.js' %}"></script>
+    <!-- AOS JS -->
+    <script src="{% static 'assets/js/vendors/aos.min.js' %}"></script>
+    <!-- Main script JS -->
+    <script src="{% static 'assets/js/script.js' %}"></script>
+</body>
+
+</html>

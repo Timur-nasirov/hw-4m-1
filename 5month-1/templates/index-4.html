@@ -1,0 +1,249 @@
+{% load static %}
+{% include 'include/home.html' %}
+<body class="theme-color-4">
+    <!-- Preloader start -->
+    <div id="preLoader">
+        <div class="loader">
+            <img src="{% static 'assets/images/loader-1.gif' %}" alt="Preloader'">
+        </div>
+    </div>
+    {% include 'include/header.html' %}
+
+    <!-- Home-area start-->
+    <section class="hero-banner hero-banner-4 parallax">
+        <div class="container-fluid">
+            <div class="row gx-xl-5">
+                <div class="col-lg-6">
+                    <div class="fluid-left">
+                        <div class="banner-content">
+                            <h1 class="title mb-30" data-aos="fade-up" data-aos-delay="100">
+                                {{ settings4.title_1 }}
+                            </h1>
+                            <p class="text color-dark" data-aos="fade-up" data-aos-delay="100">
+                                {{ settings4.desc_1 }}
+                            </p>
+                            <div class="cta-btn mt-40 btn-groups" data-aos="fade-up" data-aos-delay="250">
+                                <a href="{% url 'shop' %}" class="btn btn-lg btn-primary" title="Make Your Order" target="_self">Магазин</a>
+                                <a href="{% url 'contact' %}" class="btn btn-lg btn-outline bg-white border-0" title="How It Works" target="_self">Контакты</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 align-self-end">
+                    <div class="banner-image parallax-img" data-speed="0.1" data-revert="true">
+                        <img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ settings4.banner_1.url }}" alt="Banner Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-img" data-bg-image="{% static 'assets/images/banner/hero-banner-bg-4.jpg' %}"></div>
+    </section>
+    <!-- Home-area end -->
+
+    <!-- Category-area start -->
+    <section class="category-area category-4 ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title title-center mb-50" data-aos="fade-up">
+                        <h2 class="title mb-0">Категории</h2>
+                    </div>
+                </div>
+                <div class="col-12" data-aos="fade-up">
+                    <div class="swiper category-slider" id="category-slider-5" data-slides-per-view="6" data-swiper-loop="false">
+                        <div class="swiper-wrapper">
+                            {%  for category in categoryes %}
+                            <div class="swiper-slide">
+                                <div class="card text-center">
+                                    <h4 class="card-title lc-1 mb-1"><a href="{% url 'shop' %}" target="_self" title="Coffee Items">{{ category.title }}</a></h4>
+                                    <span class="font-lg">{{ category.count }} товаров</span>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        <div class="swiper-pagination position-static mt-40" id="category-slider-5-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Category-area end -->
+
+    <!-- About-area start -->
+    <section class="about-area about-4 pb-60">
+        <div class="container">
+            <div class="row align-items-center gx-xl-5">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="image mb-40">
+                        <img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ settings4.banner_2.url }}" alt="Image">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="content-title mb-40">
+                        <h2 class="title mb-30">
+                            {{ settings4.title_2 }}
+                        </h2>
+                        <div class="info-list mb-10">
+                            <div class="row">
+                                <div class="col-md-6 mb-30 item">
+                                    <div class="card align-items-center">
+                                        <div class="card-content">
+                                            <h6 class="card-title mb-2">{{ settings.quality_1 }}</h6>
+                                            <p class="card-text">
+                                                {{ settings.quality_desc_1 }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-30 item">
+                                    <div class="card align-items-center">
+                                        <div class="card-content">
+                                            <h6 class="card-title mb-2">{{ settings.quality_2 }}</h6>
+                                            <p class="card-text">{{ settings.quality_desc_2 }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-30 item">
+                                    <div class="card align-items-center">
+                                        <div class="card-content">
+                                            <h6 class="card-title mb-2">{{ settings.quality_3 }}</h6>
+                                            <p class="card-text">{{ settings.quality_desc_3 }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-30 item">
+                                    <div class="card align-items-center">
+                                        <div class="card-content">
+                                            <h6 class="card-title mb-2">{{ settings.quality_4 }}</h6>
+                                            <p class="card-text">{{ settings.quality_desc_4 }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{% url 'login' %}" class="btn btn-lg btn-primary" title="Start Your Shopping" target="_self">Вход</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About-area end -->
+
+    <!-- Product-area start -->
+    <section class="product-area product-4 pt-100 pb-75 bg-primary-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title title-center mb-20" data-aos="fade-up">
+                        <h2 class="title mb-30">Продукты</h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tab-content">
+                        <div class="tab-pane slide show active" id="tab1">
+                            <div class="row">
+                                {% for product in products %}
+                                <div class="col-sm-6 col-lg-4 col-xl-3 item">
+                                    <div class="product text-center p-25 radius-md mb-25">
+                                        <figure class="product-img mb-20">
+                                            <a href="{% url 'shop-details' id=product.id %}" target="_self" title="Link" class="lazy-container ratio ratio-2-3 bg-none">
+                                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{% static 'assets/images/product/vegetables/pro-1.png' %}" alt="Image">
+                                            </a>
+                                            <a href="{% url 'cart' %}" class="btn btn-md btn-primary hover-show" title="Add to Cart" target="_self">Добавить в корзину</a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h4 class="product-title lc-1 mb-10">
+                                                <a href="{% url 'shop-details' id=product.id %}" target="_self" title="Natural Fresh Fruits">{{ product.title }}</a>
+                                            </h4>
+                                            <div class="product-price">
+                                                <span class="h6 font-lg new-price color-primary">{{ product.new_price }} сом</span>
+                                                <span class="prev-price font-sm"><s>{{ product.old_price }} сом</s></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product-area end -->
+
+    <!-- Blog-area start -->
+    <section class="blog-area blog-3 pt-100 pb-70">
+        <div class="overlay opacity-1 bg-primary bg-img" data-bg-image="{% static 'assets/images/blog-bg-1.png' %}"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="col-12">
+                        <div class="section-title title-inline mb-50" data-aos="fade-up">
+                            <div>
+                                <h2 class="title color-white">Блог</h2>
+                            </div>
+                            <a href="{% url 'blogs' %}"><button class="btn btn-lg btn-outline bg-white" type="button" aria-label="Read Now">Читать больше</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        {% for blog in blogs %}
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                            <article class="card mb-30 radius-md p-20">
+                                <div class="card-img">
+                                    <a href="{% url 'blog-details' id=blog.id %}" target="_self" title="Link" class="lazy-container ratio ratio-5-3">
+                                        <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{% static 'assets/images/blog/blog-11.jpg' %}" alt="Blog Image">
+                                    </a>
+                                </div>
+                                <div class="card-content">
+                                    <ul class="card-list list-unstyled mb-20 radius-sm px-3  py-2 justify-content-between shadow-md">
+                                        <li class="icon-start">
+                                            <span target="_self" title="Link"><i class="fal fa-user"></i>От {{ blog.author }}</a>
+                                        </li>
+                                        <li class="icon-start">
+                                            <span target="_self" title="Link"><i class="fal fa-calendar-check"></i>{{ blog.date }}</a>
+                                        </li>
+                                        <li class="icon-start">
+                                            <span target="_self" title="Link"><i class="fal fa-tag"></i>{{ blog.flags }}</span>
+                                        </li>
+                                    </ul>
+                                    <h4 class="card-title lc-1 mb-15">
+                                        <a href="{% url 'blog-details' id=blog.id %}" target="_self" title="Link">
+                                            {{ blog.title }}
+                                        </a>
+                                    </h4>
+                                    <a href="{% url 'blog-details' id=blog.id %}" class="btn-text color-primary font-lg" target="_self" title="Read More">Читать больше</a>
+                                </div>
+                            </article>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog-area end -->
+
+    <!-- Gallery-area start -->
+    <div class="gallery-area" data-aos="fade-up">
+        <div class="container">
+            <div class="swiper gallery-slider">
+                <div class="swiper-wrapper">
+                    {% for image in gallery %}
+                    
+                    <div class="swiper-slide">
+                        <a href="{{ image.link }}" class="slider-item" title="{{ image.title }}" target="_blank">
+                            <div class="lazy-container ratio ratio-2-3">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}">
+                           </div>
+                            <div class="icon rounded-pill"><img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}"></div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Gallery-area end -->
+{% include 'include/footer.html' %}

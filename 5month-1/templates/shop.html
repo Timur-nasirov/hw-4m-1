@@ -1,0 +1,90 @@
+{% include 'include/home.html' %}
+{% load static %}
+<body class="theme-color-1">
+    <!-- Preloader start -->
+    <div id="preLoader">
+        <div class="loader">
+            <img src="{{ settings.loader.url }}" alt="Preloader">
+        </div>
+    </div>
+    <!-- Preloader end -->
+
+    {% include 'include/header.html' %}
+
+    <!-- Breadcrumb start -->
+    <div class="breadcrumb-area bg-img bg-cover" data-bg-image="{% static 'assets/images/breadcrumb-bg.jpg' %}">
+        <div class="overlay 65"></div>
+        <div class="container">
+            <div class="content text-center">
+                <h2 class="color-white">Магазин</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb end -->
+
+    <!-- Shop-area start -->
+    <div class="shop-area pt-100 pb-75">
+        <div class="container">
+            <!-- Products -->
+            <div class="row">
+                {% for product in products %}
+                <div class="col-sm-6 col-lg-4 col-xl-3 item">
+                    <div class="product radius-md text-center p-30 mb-25">
+                        <figure class="product-img mb-20 mx-auto">
+                            <a href="{% url 'shop-details' id=1 %}" target="_self" title="Link" class="lazy-container ratio ratio-1-1 bg-none">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ product.image.url }}" alt="Image">
+                            </a>
+                            <div class="hover-show">
+                                <div class="btn-groups">
+                                    <a href="{% url 'shop-details' id=product.id %}" class="btn-icon rounded-circle" title="Quick View" target="_self">
+                                        <i class="fal fa-eye"></i>
+                                    </a>
+                                    <a href="{% url 'cart' %}" class="btn-icon rounded-circle" title="Add to Cart" target="_self">
+                                        <i class="fal fa-shopping-cart"></i>
+                                    </a>
+                                    <a href="{% url 'wishlist' %}" class="btn-icon rounded-circle" title="Add to Wishlist" target="_self">
+                                        <i class="fal fa-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="product-details">
+                            <h4 class="product-title lc-1 mb-10"><a href="{% url 'shop-details' id=product.id %}" target="_self" title="Vanilla Cold Coffee">{{ product.title }}</a></h4>
+                            <div class="product-price">
+                                <span class="h6 font-lg new-price color-primary">{{ product.new_price }} сом</span>
+                                <span class="prev-price font-sm"><s>{{ product.old_price }} сом</s></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Shop-area end -->
+    <div class="gallery-area" data-aos="fade-up">
+        <div class="container">
+            <div class="swiper gallery-slider">
+                <div class="swiper-wrapper">
+                    {% for image in gallery %}
+                    
+                    <div class="swiper-slide">
+                        <a href="{{ image.link }}" class="slider-item" title="{{ image.title }}" target="_blank">
+                            <div class="lazy-container ratio ratio-2-3">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}">
+                           </div>
+                            <div class="icon rounded-pill"><img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}"></div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% include 'include/footer.html' %}

@@ -1,0 +1,139 @@
+{% include 'include/home.html' %}
+{% load static %}
+<body class="theme-color-1">
+    <!-- Preloader start -->
+    <div id="preLoader">
+        <div class="loader">
+            <img src="{% static 'assets/images/loader-1.gif' %}" alt="Preloader'">
+        </div>
+    </div>
+    <!-- Header-area start -->
+    {% include 'include/header.html' %}
+
+    <!-- Breadcrumb start -->
+    <div class="breadcrumb-area bg-img bg-cover" data-bg-image="{% static 'assets/images/breadcrumb-bg.jpg' %}">
+        <div class="overlay 65"></div>
+        <div class="container">
+            <div class="content text-center">
+                <h2 class="color-white">Блог</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">blog-details</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb end -->
+
+    <!-- Blog-details-area start -->
+    <div class="blog-details-area pt-100 pb-40">
+        <div class="container">
+            <div class="row justify-content-center gx-xl-5">
+                <div class="col-lg-8">
+                    <article class="blog">
+                        <div class="blog-img mb-30">
+                            <div class="lazy-container ratio ratio-5-3 radius-md">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{% static 'assets/images/blog/blog-lg-1.jpg' %}" alt="Blog Image">
+                            </div>
+                        </div>
+                        <ul class="blog-list list-unstyled mb-1">
+                            <li class="icon-start">
+                                <i class="fal fa-user"></i>By {{ blog.author }}
+                            </li>
+                            <li class="icon-start">
+                                <i class="fal fa-calendar-check"></i>{{ blog.date }}
+                            </li>
+                            <li class="icon-start">
+                                <i class="fal fa-tag"></i>{{ blog.tags }}
+                            </li>
+                        </ul>
+                        <h3 class="blog-title lc-2 mb-20">
+                            {{ blog.title }}
+                        </h3>
+                    </article>
+
+                    <!-- Description area -->
+                    <div class="blog-description pb-20">
+                        <div class="content">
+                            {{ blog.content | safe }}
+                        </div>
+                    </div>
+
+                    <!-- Comments area -->
+                    <div class="comments">
+                        <h3 class="mb-20">Коментарии ({{ comment_count }})</h3>
+                        <div class="comment-box mb-50 radius-md">
+                            <ol class="comment-list">
+                                {% for comment in comments %}
+                                <li class="comment">
+                                    <div class="comment-body">
+                                        <div class="comment-content">
+                                            <h6 class="name">{{ comment.author }}</h6>
+                                            <p>
+                                                {{ comment.content }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ol>
+                        </div>
+                        <div class="comment-reply mb-50">
+                            <h3 class="mb-10">Оставить комментарий</h3>
+                            <form method="post" class="comment-form">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20">
+                                            <input type="text" class="form-control" style="width: 500px; height: 50px;" name="name" placeholder="Имя" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group mb-30">
+                                            <textarea name="message" style="margin-top:10px; width: 500px; height: 150px;" class="form-control" placeholder="Комментарий" required rows="6"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-lg btn-primary rounded-pill" style="margin-top: 10px;" type="submit" aria-label="Post Comment">Отправить</button>
+                            </form>
+                            {% if create_comment %}
+                            <div>
+                                Комменатрий успешно создан!
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Blog-details-area end -->
+    
+    <!-- Gallery-area start -->
+    <div class="gallery-area" data-aos="fade-up">
+        <div class="container">
+            <div class="swiper gallery-slider">
+                <div class="swiper-wrapper">
+                    {% for image in gallery %}
+                    
+                    <div class="swiper-slide">
+                        <a href="{{ image.link }}" class="slider-item" title="{{ image.title }}" target="_blank">
+                            <div class="lazy-container ratio ratio-2-3">
+                                <img class="lazyload" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}">
+                           </div>
+                            <div class="icon rounded-pill"><img class="lazyload blur-up" src="{% static 'assets/images/placeholder.png' %}" data-src="{{ image.photo.url }}" alt="{{ image.title }}"></div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Gallery-area end -->
+
+    {% include 'include/footer.html' %}
+</body>
+
+</html>
